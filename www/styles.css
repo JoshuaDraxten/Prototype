@@ -9,6 +9,7 @@ body {
   user-select: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-touch-callout: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 section {
@@ -31,9 +32,17 @@ core-toolbar {
 paper-button {
   margin: 0.5em 1em 0.5em 0;
   width: 10em;
+}
+
+.newMessage {
   position:absolute;
   width:90%;
   margin-left:5%;
+}
+
+.emojiButton{
+  width:30%;
+  float:center;
 }
 
 paper-button[right] {
