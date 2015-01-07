@@ -6,7 +6,10 @@
     The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
     Code distributed by Google as part of the polymer project is also
     subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><!DOCTYPE html><html><head>
+-->
+<!doctype html>
+<html>
+<head>
 
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
@@ -19,7 +22,7 @@
   <link href="paper-input-decorator.html" rel="import">
   <link href="paper-input.html" rel="import">
 
-  <style shim-shadowdom="">
+  <style shim-shadowdom>
 
     body {
       font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
@@ -80,17 +83,12 @@
       background-color: #0f9d58;
     }
 
-    .custom /deep/ .cursor {
-      background-color: #1a237e;
-    }
-
     .custom.invalid /deep/ .floated-label .label-text,
     .custom /deep/ .error {
       color: #f06292;
     }
 
-    .custom.invalid /deep/ .focused-underline,
-    .custom.invalid /deep/ .cursor {
+    .custom.invalid /deep/ .focused-underline {
       background-color: #f06292;
     }
 
@@ -101,7 +99,7 @@
   </style>
 
 </head>
-<body unresolved="">
+<body unresolved>
 
   <section>
 
@@ -113,7 +111,7 @@
 
     <br>
 
-    <paper-input label="floating label" floatinglabel=""></paper-input>
+    <paper-input label="floating label" floatingLabel></paper-input>
 
   </section>
 
@@ -129,7 +127,7 @@
 
     <br>
 
-    <paper-input-decorator label="with core-input + floatingLabel" floatinglabel="">
+    <paper-input-decorator label="with core-input + floatingLabel" floatingLabel>
       <input is="core-input">
     </paper-input-decorator>
 
@@ -143,7 +141,7 @@
 
     <br>
 
-    <paper-input-decorator label="with autogrowing text area + floatingLabel" floatinglabel="">
+    <paper-input-decorator label="with autogrowing text area + floatingLabel" floatingLabel>
       <paper-autogrow-textarea>
         <textarea></textarea>
       </paper-autogrow-textarea>
@@ -157,11 +155,18 @@
 
     <button onclick="validateAll()">click me to validate all</button>
 
-    <paper-input-decorator label="required" floatinglabel="" error="input is required!">
-      <input is="core-input" required="">
+    <paper-input-decorator label="required" floatingLabel error="input is required!">
+      <input is="core-input" required>
     </paper-input-decorator>
 
-    <script src="demo.html.0.js"></script>
+    <script>
+      function validateAll() {
+        var $d = document.getElementById('validate').querySelectorAll('paper-input-decorator');
+        Array.prototype.forEach.call($d, function(d) {
+          d.isInvalid = !d.querySelector('input').validity.valid;
+        });
+      }
+    </script>
 
   </section>
 
@@ -181,6 +186,5 @@
 
   </section>
 
-
-
-</body></html>
+</body>
+</html>
